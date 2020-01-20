@@ -1,4 +1,4 @@
-package com.shawn.ec
+package com.roadmountain.sim
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

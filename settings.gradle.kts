@@ -1,1 +1,1 @@
-rootProject.name = "ec"
+rootProject.name = "sim"

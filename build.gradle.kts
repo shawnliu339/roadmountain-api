@@ -8,7 +8,7 @@ plugins {
 	kotlin("plugin.jpa") version "1.3.50"
 }
 
-group = "com.shawn"
+group = "com.roadmountain"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
 
@@ -17,12 +17,15 @@ repositories {
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	implementation("org.springframework:spring-webmvc:5.2.3.RELEASE")
 	implementation("org.springframework.boot:spring-boot-starter-web")
+	implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
+
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-	runtimeOnly("com.h2database:h2")
+
+	implementation("org.assertj:assertj-core:3.14.0")
 	testImplementation("org.springframework.boot:spring-boot-starter-test") {
 		exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
 	}
