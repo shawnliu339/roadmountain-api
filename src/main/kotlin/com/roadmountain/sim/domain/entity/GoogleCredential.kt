@@ -1,4 +1,4 @@
-package com.roadmountain.sim.entity
+package com.roadmountain.sim.domain.entity
 
 import com.google.api.client.util.Maps
 import org.springframework.data.annotation.Id

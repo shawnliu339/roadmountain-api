@@ -1,6 +1,6 @@
 package com.roadmountain.sim.converter
 
-import com.roadmountain.sim.model.CustomerSuffix
+import com.roadmountain.sim.domain.enum.CustomerSuffix
 import org.springframework.core.convert.converter.Converter
 import org.springframework.data.convert.ReadingConverter
 import javax.swing.text.Document

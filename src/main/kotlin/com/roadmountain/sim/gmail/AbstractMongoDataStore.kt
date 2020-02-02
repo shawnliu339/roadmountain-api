@@ -7,7 +7,7 @@ import com.google.api.client.util.store.AbstractDataStore
 import com.google.api.client.util.store.DataStore
 import com.google.api.client.util.store.DataStoreFactory
 import com.google.api.client.util.store.DataStoreUtils
-import com.roadmountain.sim.entity.GoogleCredential
+import com.roadmountain.sim.domain.entity.GoogleCredential
 import java.io.IOException
 import java.io.Serializable
 import java.util.*

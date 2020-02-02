@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 class WebConfiguration : WebMvcConfigurer {
     override fun addResourceHandlers(registry: ResourceHandlerRegistry) {
         registry.addResourceHandler("/resources/templates/**")
-                .addResourceLocations("/resources/templates", "/resources/static")
-                .setCachePeriod(0)
+            .addResourceLocations("/resources/templates", "/resources/static")
+            .setCachePeriod(0)
     }
 }

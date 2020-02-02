@@ -1,7 +1,7 @@
 package com.roadmountain.sim.gmail
 
 import com.google.api.client.util.store.AbstractDataStoreFactory
-import com.roadmountain.sim.entity.GoogleCredential
+import com.roadmountain.sim.domain.entity.GoogleCredential
 import com.roadmountain.sim.repository.GoogleCredentialRepository
 import java.io.Serializable
 

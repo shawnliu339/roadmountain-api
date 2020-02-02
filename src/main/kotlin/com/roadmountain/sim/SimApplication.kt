@@ -7,5 +7,5 @@ import org.springframework.boot.runApplication
 class EcApplication
 
 fun main(args: Array<String>) {
-	runApplication<EcApplication>(*args)
+    runApplication<EcApplication>(*args)
 }
