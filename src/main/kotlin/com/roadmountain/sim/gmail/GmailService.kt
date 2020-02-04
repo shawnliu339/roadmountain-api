@@ -10,7 +10,6 @@ import java.io.File
 import java.io.IOException
 import java.util.*
 import javax.activation.DataHandler
-import javax.activation.DataSource
 import javax.activation.FileDataSource
 import javax.mail.Multipart
 import javax.mail.Session
@@ -21,8 +20,7 @@ import javax.mail.internet.MimeMultipart
 
 
 @Service
-class GMailService(
-) {
+class GmailService(private val gmail: Gmail) {
     /**
      * Create a MimeMessage using the parameters provided.
      *
@@ -41,15 +39,16 @@ class GMailService(
     ): MimeMessage {
         val props = Properties()
         val session: Session = Session.getDefaultInstance(props, null)
-        val email = MimeMessage(session)
-        email.setFrom(InternetAddress(from))
-        email.addRecipient(
-            javax.mail.Message.RecipientType.TO,
-            InternetAddress(to)
-        )
-        email.subject = subject
-        email.setText(bodyText)
-        return email
+
+        return MimeMessage(session).apply {
+            setFrom(InternetAddress(from))
+            addRecipient(
+                javax.mail.Message.RecipientType.TO,
+                InternetAddress(to)
+            )
+            setSubject(subject)
+            setText(bodyText)
+        }
     }
 
     /**
@@ -85,25 +84,32 @@ class GMailService(
         subject: String?,
         bodyText: String?,
         file: File
-    ): MimeMessage? {
+    ): MimeMessage {
         val props = Properties()
         val session = Session.getDefaultInstance(props, null)
-        val email = MimeMessage(session)
-        email.setFrom(InternetAddress(from))
-        email.addRecipient(
-            javax.mail.Message.RecipientType.TO,
-            InternetAddress(to)
-        )
-        email.subject = subject
-        var mimeBodyPart = MimeBodyPart()
-        mimeBodyPart.setContent(bodyText, "text/plain")
-        val multipart: Multipart = MimeMultipart()
-        multipart.addBodyPart(mimeBodyPart)
-        mimeBodyPart = MimeBodyPart()
-        val source: DataSource = FileDataSource(file)
-        mimeBodyPart.setDataHandler(DataHandler(source))
-        mimeBodyPart.setFileName(file.getName())
-        multipart.addBodyPart(mimeBodyPart)
+
+        val email = MimeMessage(session).apply {
+            setFrom(InternetAddress(from))
+            addRecipient(
+                javax.mail.Message.RecipientType.TO,
+                InternetAddress(to)
+            )
+            setSubject(subject)
+        }
+
+        val textBodyPart = MimeBodyPart().apply {
+            setContent(bodyText, "text/plain")
+        }
+        val fileBodyPart = MimeBodyPart().apply {
+            dataHandler = DataHandler(FileDataSource(file))
+            fileName = file.name
+        }
+
+        val multipart: Multipart = MimeMultipart().apply {
+            addBodyPart(textBodyPart)
+            addBodyPart(fileBodyPart)
+        }
+
         email.setContent(multipart)
         return email
     }
@@ -111,7 +117,6 @@ class GMailService(
     /**
      * Send an email from the user's mailbox to its recipient.
      *
-     * @param service Authorized Gmail API instance.
      * @param userId User's email address. The special value "me"
      * can be used to indicate the authenticated user.
      * @param emailContent Email to be sent.
@@ -120,12 +125,11 @@ class GMailService(
      * @throws IOException
      */
     fun sendMessage(
-        service: Gmail,
         userId: String,
         emailContent: MimeMessage
     ): Message {
         var message = createMessageWithEmail(emailContent)
-        message = service.users().messages().send(userId, message).execute()
+        message = gmail.users().messages().send(userId, message).execute()
         println("Message id: " + message.id)
         println(message.toPrettyString())
         return message
