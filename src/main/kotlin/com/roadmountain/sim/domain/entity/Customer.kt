@@ -14,7 +14,7 @@ data class Customer(
     val lastName: String,
     val simNo: String,
     val passportNo: String,
-    val passportExpiry: String,
+    val passportExpiry: LocalDate,
     val passportCountry: String,
     val address: String,
     val dateOfBirth: LocalDate,

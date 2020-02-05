@@ -25,7 +25,7 @@ class CustomerRepositoryTest : TestBase() {
             lastName = "testLastName",
             simNo = "testSimNo",
             passportNo = "testPassportNo",
-            passportExpiry = "testPassportExpiry",
+            passportExpiry = LocalDate.parse("2010-11-10"),
             passportCountry = "testPassportCountry",
             address = "testAddress",
             dateOfBirth = LocalDate.parse("2010-10-10"),

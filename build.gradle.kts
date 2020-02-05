@@ -37,6 +37,9 @@ dependencies {
 
     // test
     implementation("org.assertj:assertj-core:3.14.0")
+    testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
+    testImplementation("org.mockito:mockito-junit-jupiter:3.2.4")
+    testImplementation("org.mockito:mockito-inline:3.2.4")
     testImplementation("org.springframework.boot:spring-boot-starter-test") {
         exclude(group = "org.junit.vintage", module = "junit-vintage-engine")
     }
