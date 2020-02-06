@@ -24,7 +24,7 @@ class MongoDataStoreFactory(
         }
 
         override fun save() {
-            repository.save(credential)
+            credential = repository.save(credential)
         }
     }
 }
