@@ -2,6 +2,7 @@ package com.roadmountain.sim.domain.entity
 
 import com.roadmountain.sim.domain.enum.CustomerSuffix
 import org.springframework.data.annotation.Id
+import java.time.Instant
 import java.time.LocalDate
 
 data class Customer(
@@ -20,7 +21,8 @@ data class Customer(
     val dateOfBirth: LocalDate,
     val email: String?,
     val brand: String,
-    val plan: String
+    val plan: String,
+    val created: Instant = Instant.now()
 ) {
     val id: String
         get() {

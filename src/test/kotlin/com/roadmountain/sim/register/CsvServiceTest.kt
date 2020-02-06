@@ -29,7 +29,7 @@ open class CsvServiceTest {
     @Test
     fun testCreateCsvString() {
         // Prepare
-        given(repository.findByDateOfBirthBetween(any()))
+        given(repository.findByCreatedBetween(any()))
             .willReturn(
                 listOf(
                     Customer(
@@ -71,7 +71,7 @@ open class CsvServiceTest {
 
     @Test
     fun `test createCsvString() with empty list`() {
-        given(repository.findByDateOfBirthBetween(any())).willReturn(emptyList())
+        given(repository.findByCreatedBetween(any())).willReturn(emptyList())
 
         val actual = target.createCsvString()
 

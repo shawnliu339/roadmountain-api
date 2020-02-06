@@ -6,8 +6,7 @@ import org.assertj.core.util.VisibleForTesting
 import org.springframework.data.domain.Range
 import org.springframework.stereotype.Service
 import java.io.File
-import java.time.Clock
-import java.time.LocalDate
+import java.time.*
 import java.time.format.DateTimeFormatter
 
 @Service
@@ -48,9 +47,12 @@ class CsvService(
 
     @VisibleForTesting
     internal fun findAllInThePreviousDay(): List<Customer> {
-        val now = LocalDate.now(clock)
-        return customerRepository.findByDateOfBirthBetween(
-            Range.closed(now.minusDays(1), now)
+        val thePreviousDate = LocalDate.now(clock).minusDays(1)
+        val thePreviousDay = Range.closed(
+            LocalDateTime.of(thePreviousDate, LocalTime.MIN).toInstant(ZoneOffset.UTC),
+            LocalDateTime.of(thePreviousDate, LocalTime.MAX).toInstant(ZoneOffset.UTC)
         )
+
+        return customerRepository.findByCreatedBetween(thePreviousDay)
     }
 }

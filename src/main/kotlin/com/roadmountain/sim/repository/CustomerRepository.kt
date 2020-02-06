@@ -3,8 +3,8 @@ package com.roadmountain.sim.repository
 import com.roadmountain.sim.domain.entity.Customer
 import org.springframework.data.domain.Range
 import org.springframework.data.mongodb.repository.MongoRepository
-import java.time.LocalDate
+import java.time.Instant
 
 interface CustomerRepository : MongoRepository<Customer, String> {
-    fun findByDateOfBirthBetween(range: Range<LocalDate>): List<Customer>
+    fun findByCreatedBetween(range: Range<Instant>): List<Customer>
 }

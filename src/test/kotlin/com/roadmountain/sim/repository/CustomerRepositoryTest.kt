@@ -6,16 +6,21 @@ import com.roadmountain.sim.domain.enum.CustomerSuffix
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.Range
+import java.time.Clock
+import java.time.Instant
 import java.time.LocalDate
+import java.time.ZoneOffset
+import java.time.temporal.ChronoUnit.DAYS
 import org.assertj.core.api.Assertions.assertThat as assertThat1
 
 
 class CustomerRepositoryTest : TestBase() {
     @Autowired
     lateinit var target: CustomerRepository
+    private val clock: Clock = Clock.fixed(Instant.parse("2010-10-10T00:00:00Z"), ZoneOffset.UTC)
 
     @Test
-    fun testFindByDateOfBirthBetween() {
+    fun testFindByCreatedBetween() {
         // Prepare
         val customer1 = Customer(
             vendorCode = "testVendorCode",
@@ -31,17 +36,18 @@ class CustomerRepositoryTest : TestBase() {
             dateOfBirth = LocalDate.parse("2010-10-10"),
             email = "testEmail",
             brand = "testBrand",
-            plan = "testPlan"
+            plan = "testPlan",
+            created = Instant.now(clock)
         )
-        val customer2 = customer1.copy(dateOfBirth = LocalDate.parse("2010-10-01"))
-        val customer3 = customer1.copy(dateOfBirth = LocalDate.parse("2010-10-10"))
+        val customer2 = customer1.copy(created = Instant.now(clock).minus(10, DAYS))
+        val customer3 = customer1.copy(created = Instant.now(clock))
 
         target.save(customer2)
         val expected = target.saveAll(listOf(customer1, customer3))
 
         // Do
-        val actual = target.findByDateOfBirthBetween(
-            Range.closed(LocalDate.parse("2010-10-10"), LocalDate.parse("2010-10-10"))
+        val actual = target.findByCreatedBetween(
+            Range.closed(Instant.now(clock), Instant.now(clock))
         )
 
         // Verify
