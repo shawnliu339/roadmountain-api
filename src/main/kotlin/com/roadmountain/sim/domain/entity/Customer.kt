@@ -11,7 +11,7 @@ data class Customer(
     val vendorCode: String,
     val suffix: CustomerSuffix,
     val firstName: String,
-    val middleName: String,
+    val middleName: String?,
     val lastName: String,
     val simNo: String,
     val passportNo: String,
