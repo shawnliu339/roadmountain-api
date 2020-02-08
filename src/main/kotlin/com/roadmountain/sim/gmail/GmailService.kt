@@ -79,9 +79,9 @@ class GmailService(private val gmail: Gmail) {
      * @throws MessagingException
      */
     fun createEmailWithAttachment(
-        to: String?,
-        from: String?,
-        subject: String?,
+        to: Array<String>,
+        from: String,
+        subject: String,
         bodyText: String?,
         file: File
     ): MimeMessage {
@@ -90,9 +90,9 @@ class GmailService(private val gmail: Gmail) {
 
         val email = MimeMessage(session).apply {
             setFrom(InternetAddress(from))
-            addRecipient(
+            addRecipients(
                 javax.mail.Message.RecipientType.TO,
-                InternetAddress(to)
+                to.map { InternetAddress(it) }.toTypedArray()
             )
             setSubject(subject)
         }
