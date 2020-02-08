@@ -1,6 +1,7 @@
 package com.roadmountain.sim.configuration
 
 import org.springframework.context.annotation.Configuration
+import org.springframework.web.cors.CorsConfiguration
 import org.springframework.web.servlet.config.annotation.CorsRegistry
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
@@ -16,7 +17,7 @@ class WebConfiguration : WebMvcConfigurer {
     override fun addCorsMappings(registry: CorsRegistry) {
         registry.addMapping("/**")
             .allowedOrigins("roadmountain-activate.herokuapp.com")
-            .allowedMethods()
+            .allowedMethods(CorsConfiguration.ALL)
             .allowCredentials(false)
             .maxAge(3600)
     }
