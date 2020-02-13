@@ -6,7 +6,6 @@ import java.time.LocalDate
 import javax.validation.constraints.Email
 
 data class RegisterRequest(
-    val vendorCode: String,
     val suffix: CustomerSuffix,
     val firstName: String,
     val middleName: String?,
@@ -24,7 +23,6 @@ data class RegisterRequest(
 ) {
     fun toEntity(): Customer {
         return Customer(
-            vendorCode = vendorCode,
             suffix = suffix,
             firstName = firstName,
             middleName = middleName,

@@ -8,7 +8,6 @@ import java.time.LocalDate
 data class Customer(
     @field:Id
     private val _id: String? = null,
-    val vendorCode: String,
     val suffix: CustomerSuffix,
     val firstName: String,
     val middleName: String?,

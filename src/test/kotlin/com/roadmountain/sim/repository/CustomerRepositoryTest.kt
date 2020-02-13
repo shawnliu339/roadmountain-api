@@ -23,7 +23,6 @@ class CustomerRepositoryTest : TestBase() {
     fun testFindByCreatedBetween() {
         // Prepare
         val customer1 = Customer(
-            vendorCode = "testVendorCode",
             suffix = CustomerSuffix.MISS,
             firstName = "testFirstName",
             middleName = "testMiddleName",

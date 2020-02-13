@@ -1,4 +1,8 @@
 debug: true
 logging.level.org.springframework.data.mongodb.core.MongoTemplate: DEBUG
 
-spring.data.mongodb.database: roadmountain
+spring:
+  data:
+    mongodb:
+      database: app1
+      uri: mongodb://localhost:27017/

@@ -33,7 +33,6 @@ open class CsvServiceTest {
             .willReturn(
                 listOf(
                     Customer(
-                        vendorCode = "testVendorCode",
                         suffix = CustomerSuffix.MISS,
                         firstName = "testFirstName",
                         middleName = "testMiddleName",
@@ -62,7 +61,7 @@ open class CsvServiceTest {
             append("Address in Australia,Date of Birth,Email(Optional),Brand,Plan(\$)\n")
 
             // rows
-            append("testVendorCode,MISS,testFirstName,testMiddleName,testLastName,")
+            append(",MISS,testFirstName,testMiddleName,testLastName,")
             append("testSimNo,testPassportNo,10/11/2010,testPassportCountry,")
             append("testAddress,10/10/2010,testEmail,testBrand,testPlan\n")
         }

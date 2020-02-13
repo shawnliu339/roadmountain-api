@@ -18,6 +18,7 @@ class CsvService(
         private const val TITLE: String = "Vendor Code,Suffix,First Name,Middle Name,Last Name," +
                 "SIM No,Passport No,Passport Expiry,Passport Country," +
                 "Address in Australia,Date of Birth,Email(Optional),Brand,Plan(\$)\n"
+        private const val VENDOR_CODE = ""
     }
 
     fun createCsvFile(): File? {
@@ -36,7 +37,7 @@ class CsvService(
         val formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu")
         val rows = listInThePreviousDay.map {
             buildString {
-                append("${it.vendorCode},${it.suffix},${it.firstName},${it.middleName},${it.lastName},")
+                append("$VENDOR_CODE,${it.suffix},${it.firstName},${it.middleName},${it.lastName},")
                 append("${it.simNo},${it.passportNo},${it.passportExpiry.format(formatter)},${it.passportCountry},")
                 append("${it.address},${it.dateOfBirth.format(formatter)},${it.email},${it.brand},${it.plan}\n")
             }
