@@ -18,7 +18,7 @@ data class Customer(
     val passportCountry: String,
     val address: String,
     val dateOfBirth: LocalDate,
-    val email: String?,
+    val email: String,
     val brand: String,
     val plan: String,
     val created: Instant = Instant.now()

@@ -33,7 +33,7 @@ class GmailService(private val gmail: Gmail) {
      */
     fun createEmail(
         to: String,
-        from: String?,
+        from: String = "you@gmail.com",
         subject: String,
         bodyText: String
     ): MimeMessage {
@@ -80,7 +80,7 @@ class GmailService(private val gmail: Gmail) {
      */
     fun createEmailWithAttachment(
         to: Array<String>,
-        from: String,
+        from: String = "you@gmail.com",
         subject: String,
         bodyText: String?,
         file: File
@@ -125,8 +125,8 @@ class GmailService(private val gmail: Gmail) {
      * @throws IOException
      */
     fun sendMessage(
-        userId: String,
-        emailContent: MimeMessage
+        emailContent: MimeMessage,
+        userId: String = "me"
     ): Message {
         var message = createMessageWithEmail(emailContent)
         message = gmail.users().messages().send(userId, message).execute()

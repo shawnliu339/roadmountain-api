@@ -18,11 +18,10 @@ class ScheduleService(
         val file = csvService.createCsvFile() ?: return
         val content = gmailService.createEmailWithAttachment(
             to = arrayOf(PROVIDER, OWNER),
-            from = "you@gmail.com",
             subject = "test mail",
             bodyText = "test test!",
             file = file
         )
-        gmailService.sendMessage(userId = "me", emailContent = content)
+        gmailService.sendMessage(content)
     }
 }

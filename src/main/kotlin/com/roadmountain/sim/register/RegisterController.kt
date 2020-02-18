@@ -16,7 +16,7 @@ class RegisterController(
 ) {
     @PostMapping("/registers")
     fun register(@Validated @RequestBody request: RegisterRequest) {
-        service.save(request.toEntity())
+        service.register(request.toEntity())
     }
 
     @GetMapping("/countries")
