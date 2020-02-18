@@ -16,7 +16,7 @@ class WebConfiguration : WebMvcConfigurer {
 
     override fun addCorsMappings(registry: CorsRegistry) {
         registry.addMapping("/**")
-            .allowedOrigins("roadmountain-activate.herokuapp.com", "http://localhost:8081")
+            .allowedOrigins("https://roadmountain-activate.herokuapp.com", "http://localhost:8081")
             .allowedMethods(CorsConfiguration.ALL)
             .allowCredentials(false)
             .maxAge(3600)
