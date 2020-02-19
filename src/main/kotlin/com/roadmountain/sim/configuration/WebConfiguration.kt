@@ -9,14 +9,22 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer
 @Configuration
 class WebConfiguration : WebMvcConfigurer {
     override fun addResourceHandlers(registry: ResourceHandlerRegistry) {
-        registry.addResourceHandler("/resources/templates/**")
-            .addResourceLocations("/resources/templates")
-            .setCachePeriod(0)
+        registry.addResourceHandler("/static/**")
+            .addResourceLocations(
+                "classpath:/static/front/dist/static/",
+                "classpath:/static/front/dist/static/css/",
+                "classpath:/static/front/dist/static/js/"
+            )
     }
 
     override fun addCorsMappings(registry: CorsRegistry) {
         registry.addMapping("/**")
-            .allowedOrigins("https://roadmountain-activate.herokuapp.com", "http://localhost:8081")
+            .allowedOrigins(
+                "https://roadmountain-activate.herokuapp.com",
+                "http://localhost:8081",
+                "https://localhost:8080",
+                "http://localhost:8080"
+            )
             .allowedMethods(CorsConfiguration.ALL)
             .allowCredentials(false)
             .maxAge(3600)

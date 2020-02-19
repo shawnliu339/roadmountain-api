@@ -19,7 +19,6 @@ repositories {
 dependencies {
     implementation("org.springframework:spring-webmvc:5.2.3.RELEASE")
     implementation("org.springframework.boot:spring-boot-starter-web")
-    implementation("org.springframework.boot:spring-boot-starter-thymeleaf")
     implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
 
     // kotlin
