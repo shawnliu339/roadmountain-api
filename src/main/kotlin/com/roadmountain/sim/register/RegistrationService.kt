@@ -24,9 +24,13 @@ class RegistrationService(
     }
 
     fun getCountries(): Map<String, String> {
-        return Locale.getISOCountries().map {
-            val locale = Locale("en", it)
-            locale.country to locale.displayCountry
-        }.toMap()
+        return Locale.getISOCountries()
+            .map {
+                val locale = Locale("en", it)
+                locale.country to locale.displayCountry
+            }
+            .toList()
+            .sortedBy { it.second }
+            .toMap()
     }
 }
