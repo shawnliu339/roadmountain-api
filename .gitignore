@@ -31,3 +31,8 @@ out/
 
 ### VS Code ###
 .vscode/
+
+# Vue
+.DS_Store
+src/main/resources/static/front
+!src/main/resources/static/front/dist/**
