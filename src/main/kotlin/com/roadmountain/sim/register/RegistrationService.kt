@@ -1,25 +1,26 @@
 package com.roadmountain.sim.register
 
-import com.roadmountain.sim.domain.entity.Customer
+import com.roadmountain.sim.domain.entity.Registration
 import com.roadmountain.sim.gmail.GmailService
-import com.roadmountain.sim.repository.CustomerRepository
+import com.roadmountain.sim.repository.RegistrationRepository
 import org.springframework.stereotype.Service
 import java.util.*
 
 @Service
-class RegisterService(
-    private val customerRepository: CustomerRepository,
+class RegistrationService(
+    private val registrationRepository: RegistrationRepository,
     private val gmailService: GmailService
 ) {
-    fun register(customer: Customer): Customer {
-        val savedCustomer = customerRepository.save(customer)
+    fun register(registration: Registration) {
+        requireNotNull(registration.privacy) { "Registration privacy should not be null during register moment." }
+
+        registrationRepository.save(registration)
         val content = gmailService.createEmail(
-            to = savedCustomer.email,
+            to = registration.privacy.email,
             subject = "test",
             bodyText = "test\n  test\ntest"
         )
         gmailService.sendMessage(content)
-        return savedCustomer
     }
 
     fun getCountries(): Map<String, String> {

@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController
 
 @RestController
 class RegisterController(
-    private val service: RegisterService,
+    private val service: RegistrationService,
     private val gmailService: GmailService
 ) {
     @PostMapping("/registers")

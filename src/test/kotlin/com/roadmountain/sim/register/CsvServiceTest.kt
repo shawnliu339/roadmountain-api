@@ -2,9 +2,10 @@ package com.roadmountain.sim.register
 
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.given
-import com.roadmountain.sim.domain.entity.Customer
+import com.roadmountain.sim.domain.entity.Registration
+import com.roadmountain.sim.domain.entity.Registration.RegistrationPrivacy
 import com.roadmountain.sim.domain.enum.CustomerSuffix
-import com.roadmountain.sim.repository.CustomerRepository
+import com.roadmountain.sim.repository.RegistrationRepository
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.extension.ExtendWith
@@ -22,7 +23,7 @@ open class CsvServiceTest {
     @InjectMocks
     lateinit var target: CsvService
     @Mock
-    lateinit var repository: CustomerRepository
+    lateinit var repository: RegistrationRepository
     @Spy
     val clock: Clock = Clock.fixed(Instant.parse("2010-10-10T10:10:10Z"), ZoneOffset.UTC)
 
@@ -32,20 +33,22 @@ open class CsvServiceTest {
         given(repository.findByCreatedBetween(any()))
             .willReturn(
                 listOf(
-                    Customer(
+                    Registration(
                         suffix = CustomerSuffix.MISS,
-                        firstName = "testFirstName",
-                        middleName = "testMiddleName",
-                        lastName = "testLastName",
                         simNo = "testSimNo",
-                        passportNo = "testPassportNo",
-                        passportExpiry = LocalDate.parse("2010-11-10"),
                         passportCountry = "testPassportCountry",
-                        address = "testAddress",
                         dateOfBirth = LocalDate.parse("2010-10-10"),
-                        email = "testEmail",
                         brand = "testBrand",
-                        plan = "testPlan"
+                        plan = "testPlan",
+                        privacy = RegistrationPrivacy(
+                            firstName = "testFirstName",
+                            middleName = "testMiddleName",
+                            lastName = "testLastName",
+                            passportNo = "testPassportNo",
+                            passportExpiry = LocalDate.parse("2010-11-10"),
+                            address = "testAddress",
+                            email = "testEmail"
+                        )
                     )
                 )
             )

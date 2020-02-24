@@ -5,26 +5,30 @@ import org.springframework.data.annotation.Id
 import java.time.Instant
 import java.time.LocalDate
 
-data class Customer(
+data class Registration(
     @field:Id
     private val _id: String? = null,
     val suffix: CustomerSuffix,
-    val firstName: String,
-    val middleName: String?,
-    val lastName: String,
     val simNo: String,
-    val passportNo: String,
-    val passportExpiry: LocalDate,
     val passportCountry: String,
-    val address: String,
     val dateOfBirth: LocalDate,
-    val email: String,
     val brand: String,
     val plan: String,
+    val privacy: RegistrationPrivacy?,
     val created: Instant = Instant.now()
 ) {
     val id: String
         get() {
             return checkNotNull(_id)
         }
+
+    data class RegistrationPrivacy(
+        val firstName: String,
+        val middleName: String?,
+        val lastName: String,
+        val passportNo: String,
+        val passportExpiry: LocalDate,
+        val address: String,
+        val email: String
+    )
 }

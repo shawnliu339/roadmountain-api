@@ -1,6 +1,7 @@
 package com.roadmountain.sim.domain.model
 
-import com.roadmountain.sim.domain.entity.Customer
+import com.roadmountain.sim.domain.entity.Registration
+import com.roadmountain.sim.domain.entity.Registration.RegistrationPrivacy
 import com.roadmountain.sim.domain.enum.CustomerSuffix
 import java.time.LocalDate
 import javax.validation.constraints.Email
@@ -21,21 +22,23 @@ data class RegisterRequest(
     val brand: String,
     val plan: String
 ) {
-    fun toEntity(): Customer {
-        return Customer(
+    fun toEntity(): Registration {
+        return Registration(
             suffix = suffix,
-            firstName = firstName,
-            middleName = middleName,
-            lastName = lastName,
             simNo = simNo,
-            passportNo = passportNo,
-            passportExpiry = passportExpiry,
             passportCountry = passportCountry,
-            address = address,
             dateOfBirth = dateOfBirth,
-            email = email,
             brand = brand,
-            plan = plan
+            plan = plan,
+            privacy = RegistrationPrivacy(
+                firstName = firstName,
+                middleName = middleName,
+                lastName = lastName,
+                passportNo = passportNo,
+                passportExpiry = passportExpiry,
+                address = address,
+                email = email
+            )
         )
     }
 }
