@@ -17,8 +17,24 @@ class RegistrationService(
         registrationRepository.save(registration)
         val content = gmailService.createEmail(
             to = registration.privacy.email,
-            subject = "test",
-            bodyText = "test\n  test\ntest"
+            subject = "【SIMカード開通】登録完了のご案内",
+            bodyText = """
+                当店をご利用いただきありがとうございます。
+
+                以下のSIMカードの登録が完了しました。
+                カードの開通日は、登録日の3日後となります。(オーストラリアの土日祝日を除く)
+                
+                SIMカードナンバー: ${registration.simNo}
+                
+                上記SIMカードナンバーは、サービスのご利用やメールにてお問い合わせをいただく際等に必要となりますので、お手元にお控えください。
+                
+                ■お問合せ（必ずSIMカードナンバーをご記入下さい）
+                
+                メール  ‪roadmountain.shop@gmail.com‬
+                営業時間 10:00～17:00（土日祝休み）
+                
+                ※このメールをお送りしているアドレスは、送信専用となっており、返信いただいてもご回答いたしかねます。
+            """.trimIndent()
         )
         gmailService.sendMessage(content)
     }

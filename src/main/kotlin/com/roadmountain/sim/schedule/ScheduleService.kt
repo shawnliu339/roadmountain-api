@@ -27,8 +27,8 @@ class ScheduleService(
         val file = csvService.createCsvFile() ?: return
         val content = gmailService.createEmailWithAttachment(
             to = arrayOf(PROVIDER, OWNER),
-            subject = "test mail",
-            bodyText = "test test!",
+            subject = "Activation list from cloud ${LocalDate.now()}",
+            bodyText = "",
             file = file
         )
         gmailService.sendMessage(content)
