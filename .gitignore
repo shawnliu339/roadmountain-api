@@ -35,4 +35,4 @@ out/
 # Vue
 .DS_Store
 src/main/resources/static/front
-!src/main/resources/static/front/dist/**
+!src/main/resources/static/front/dist/
