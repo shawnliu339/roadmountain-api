@@ -11,7 +11,7 @@ import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneOffset
 import java.time.temporal.ChronoUnit.DAYS
-import org.assertj.core.api.Assertions.assertThat as assertThat1
+import org.assertj.core.api.Assertions.assertThat
 
 
 class RegistrationRepositoryTest : TestBase() {
@@ -52,6 +52,36 @@ class RegistrationRepositoryTest : TestBase() {
         )
 
         // Verify
-        assertThat1(actual).isEqualTo(expected)
+        assertThat(actual).isEqualTo(expected)
+    }
+
+    @Test
+    fun testFindBySimNo() {
+        // Prepare
+        val customer1 = Registration(
+            suffix = CustomerSuffix.MISS,
+            simNo = "testSimNo",
+            passportCountry = "testPassportCountry",
+            dateOfBirth = LocalDate.parse("2010-10-10"),
+            brand = "testBrand",
+            plan = "testPlan",
+            created = Instant.now(clock),
+            privacy = Registration.RegistrationPrivacy(
+                firstName = "testFirstName",
+                middleName = "testMiddleName",
+                lastName = "testLastName",
+                passportNo = "testPassportNo",
+                passportExpiry = LocalDate.parse("2010-11-10"),
+                address = "testAddress",
+                email = "testEmail"
+            )
+        )
+        val customer2 = customer1.copy(simNo = "test")
+        target.save(customer2)
+        val expected = target.save(customer1)
+
+        val actual = target.findBySimNo("testSimNo")
+
+        assertThat(actual).isEqualTo(expected)
     }
 }

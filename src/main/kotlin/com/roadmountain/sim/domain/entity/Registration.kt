@@ -2,13 +2,17 @@ package com.roadmountain.sim.domain.entity
 
 import com.roadmountain.sim.domain.enum.CustomerSuffix
 import org.springframework.data.annotation.Id
+import org.springframework.data.mongodb.core.index.Indexed
+import org.springframework.data.mongodb.core.mapping.Document
 import java.time.Instant
 import java.time.LocalDate
 
+@Document
 data class Registration(
     @field:Id
     private val _id: String? = null,
     val suffix: CustomerSuffix,
+    @field:Indexed(unique = true)
     val simNo: String,
     val passportCountry: String,
     val dateOfBirth: LocalDate,

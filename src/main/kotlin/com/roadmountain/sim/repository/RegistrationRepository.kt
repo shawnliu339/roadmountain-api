@@ -7,4 +7,6 @@ import java.time.Instant
 
 interface RegistrationRepository : MongoRepository<Registration, String> {
     fun findByCreatedBetween(range: Range<Instant>): List<Registration>
+
+    fun findBySimNo(simNo: String): Registration?
 }
