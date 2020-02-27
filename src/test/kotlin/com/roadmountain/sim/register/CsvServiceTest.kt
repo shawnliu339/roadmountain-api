@@ -36,7 +36,7 @@ open class CsvServiceTest {
                     Registration(
                         suffix = CustomerSuffix.MISS,
                         simNo = "testSimNo",
-                        passportCountry = "testPassportCountry",
+                        passportCountry = "jp",
                         dateOfBirth = LocalDate.parse("2010-10-10"),
                         brand = "testBrand",
                         plan = "testPlan",
@@ -65,7 +65,7 @@ open class CsvServiceTest {
 
             // rows
             append(",MISS,testFirstName,testMiddleName,testLastName,")
-            append("testSimNo,testPassportNo,10/11/2010,testPassportCountry,")
+            append("testSimNo,testPassportNo,10/11/2010,Japan,")
             append("testAddress,10/10/2010,testEmail,testBrand,testPlan\n")
         }
         assertThat(actual).isEqualTo(expected)

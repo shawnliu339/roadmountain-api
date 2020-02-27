@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service
 import java.io.File
 import java.time.*
 import java.time.format.DateTimeFormatter
+import java.util.*
 
 @Service
 class CsvService(
@@ -47,7 +48,8 @@ class CsvService(
                 append("$VENDOR_CODE,${it.suffix},")
                 append("${it.privacy.firstName},${it.privacy.middleName},${it.privacy.lastName},")
                 append("${it.simNo},")
-                append("${it.privacy.passportNo},${it.privacy.passportExpiry.format(formatter)},${it.passportCountry},")
+                append("${it.privacy.passportNo},${it.privacy.passportExpiry.format(formatter)},")
+                append("${Locale("en", it.passportCountry).displayCountry},")
                 append("${it.privacy.address},${it.dateOfBirth.format(formatter)},${it.privacy.email},")
                 append("${it.brand},${it.plan}\n")
             }
