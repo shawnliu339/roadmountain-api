@@ -3,6 +3,7 @@ package com.roadmountain.sim.repository
 import com.roadmountain.sim.common.TestBase
 import com.roadmountain.sim.domain.entity.Registration
 import com.roadmountain.sim.domain.enum.CustomerSuffix
+import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.data.domain.Range
@@ -11,7 +12,6 @@ import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneOffset
 import java.time.temporal.ChronoUnit.DAYS
-import org.assertj.core.api.Assertions.assertThat
 
 
 class RegistrationRepositoryTest : TestBase() {
@@ -40,8 +40,14 @@ class RegistrationRepositoryTest : TestBase() {
                 email = "testEmail"
             )
         )
-        val customer2 = customer1.copy(created = Instant.now(clock).minus(10, DAYS))
-        val customer3 = customer1.copy(created = Instant.now(clock))
+        val customer2 = customer1.copy(
+            created = Instant.now(clock).minus(10, DAYS),
+            simNo = "testSimNo2"
+        )
+        val customer3 = customer1.copy(
+            created = Instant.now(clock),
+            simNo = "testSimNo3"
+        )
 
         target.save(customer2)
         val expected = target.saveAll(listOf(customer1, customer3))
