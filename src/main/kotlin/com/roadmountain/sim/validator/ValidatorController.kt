@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController
 class ValidatorController(
     private val validatorService: ValidatorService
 ) {
-    @GetMapping("/validators/sims/{simNo}/unique")
+    @GetMapping("/api/validators/sims/{simNo}/unique")
     fun uniqueSimNumber(@PathVariable simNo: String): Boolean {
         return validatorService.uniqueSimNumber(simNo)
     }

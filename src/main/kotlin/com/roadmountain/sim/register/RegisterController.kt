@@ -14,12 +14,12 @@ class RegisterController(
     private val service: RegistrationService,
     private val gmailService: GmailService
 ) {
-    @PostMapping("/registers")
+    @PostMapping("/api/registers")
     fun register(@Validated @RequestBody request: RegisterRequest) {
         service.register(request.toEntity())
     }
 
-    @GetMapping("/countries")
+    @GetMapping("/api/countries")
     fun countries(): Map<String, String> {
         return service.getCountries()
     }
