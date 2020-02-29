@@ -1,6 +1,6 @@
 package com.roadmountain.sim.schedule
 
-import com.roadmountain.sim.logging.LoggerDelegate
+import com.roadmountain.sim.common.logging.LoggerDelegate
 import org.springframework.scheduling.annotation.Scheduled
 import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping

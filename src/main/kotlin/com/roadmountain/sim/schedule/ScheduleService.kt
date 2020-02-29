@@ -1,8 +1,7 @@
 package com.roadmountain.sim.schedule
 
+import com.roadmountain.sim.common.properties.RegistrationMailProperties
 import com.roadmountain.sim.gmail.GmailService
-import com.roadmountain.sim.properties.RegistrationMailProperties
-import com.roadmountain.sim.register.CsvService
 import com.roadmountain.sim.repository.RegistrationRepository
 import org.springframework.data.domain.Range
 import org.springframework.stereotype.Service

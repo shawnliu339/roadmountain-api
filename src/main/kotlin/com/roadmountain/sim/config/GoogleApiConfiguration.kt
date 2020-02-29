@@ -1,4 +1,4 @@
-package com.roadmountain.sim.configuration
+package com.roadmountain.sim.config
 
 import com.google.api.client.auth.oauth2.Credential
 import com.google.api.client.extensions.java6.auth.oauth2.AuthorizationCodeInstalledApp

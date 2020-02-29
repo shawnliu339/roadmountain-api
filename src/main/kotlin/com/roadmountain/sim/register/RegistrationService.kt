@@ -1,8 +1,8 @@
 package com.roadmountain.sim.register
 
+import com.roadmountain.sim.common.properties.RegistrationMailProperties
 import com.roadmountain.sim.domain.entity.Registration
 import com.roadmountain.sim.gmail.GmailService
-import com.roadmountain.sim.properties.RegistrationMailProperties
 import com.roadmountain.sim.repository.RegistrationRepository
 import org.springframework.stereotype.Service
 import java.util.*

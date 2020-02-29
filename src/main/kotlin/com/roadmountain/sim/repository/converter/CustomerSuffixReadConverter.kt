@@ -1,4 +1,4 @@
-package com.roadmountain.sim.converter
+package com.roadmountain.sim.repository.converter
 
 import com.roadmountain.sim.domain.enum.CustomerSuffix
 import org.springframework.core.convert.converter.Converter

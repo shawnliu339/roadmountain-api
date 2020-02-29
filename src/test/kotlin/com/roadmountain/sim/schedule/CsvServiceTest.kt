@@ -1,4 +1,4 @@
-package com.roadmountain.sim.register
+package com.roadmountain.sim.schedule
 
 import com.nhaarman.mockitokotlin2.any
 import com.nhaarman.mockitokotlin2.given

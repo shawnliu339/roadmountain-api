@@ -1,4 +1,4 @@
-package com.roadmountain.sim.logging
+package com.roadmountain.sim.common.logging
 
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
@@ -16,7 +16,8 @@ class LoggerDelegate : ReadOnlyProperty<Any?, Logger> {
 
     override operator fun getValue(thisRef: Any?, property: KProperty<*>): Logger {
         if (logger == null) {
-            logger = createLogger(thisRef!!.javaClass)
+            logger =
+                createLogger(thisRef!!.javaClass)
         }
         return logger!!
     }

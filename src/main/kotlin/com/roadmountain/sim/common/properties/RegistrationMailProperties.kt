@@ -1,4 +1,4 @@
-package com.roadmountain.sim.properties
+package com.roadmountain.sim.common.properties
 
 import org.springframework.boot.context.properties.ConfigurationProperties
 import org.springframework.boot.context.properties.ConstructorBinding

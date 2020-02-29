@@ -1,7 +1,7 @@
-package com.roadmountain.sim.register
+package com.roadmountain.sim.schedule
 
+import com.roadmountain.sim.common.logging.LoggerDelegate
 import com.roadmountain.sim.domain.entity.Registration
-import com.roadmountain.sim.logging.LoggerDelegate
 import com.roadmountain.sim.repository.RegistrationRepository
 import org.assertj.core.util.VisibleForTesting
 import org.springframework.data.domain.Range

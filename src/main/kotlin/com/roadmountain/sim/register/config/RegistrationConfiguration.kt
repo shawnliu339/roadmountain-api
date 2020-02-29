@@ -1,6 +1,6 @@
-package com.roadmountain.sim.register.configuration
+package com.roadmountain.sim.register.config
 
-import com.roadmountain.sim.properties.RegistrationMailProperties
+import com.roadmountain.sim.common.properties.RegistrationMailProperties
 import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Configuration
 

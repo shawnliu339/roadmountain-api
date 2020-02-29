@@ -1,4 +1,4 @@
-package com.roadmountain.sim.configuration
+package com.roadmountain.sim.config
 
 import org.springframework.context.annotation.Configuration
 import org.springframework.web.cors.CorsConfiguration
