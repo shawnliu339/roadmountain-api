@@ -1,0 +1,7 @@
+registration:
+  mail:
+    owner-address: roadmountain.shop@gmail.com
+    provider-address: sim@chinaunicom.com.au
+
+    csv-title: Activation list from cloud
+    activate-title: 【SIMカード開通】登録完了のご案内

@@ -1,8 +1,31 @@
-spring:
-  data:
-    mongodb:
-      uri: ${MONGODB_URI}?retryWrites=false
+debug: true
+logging.level.org.springframework.data.mongodb.core.MongoTemplate: DEBUG
 
 google:
   client-id: ${GOOGLE_CLIENT_ID}
   client-secret: ${GOOGLE_CLIENT_SECRET}
+
+spring:
+  data.mongodb.uri: ${MONGODB_URI}?retryWrites=false
+  profiles.active: local
+
+---
+
+spring:
+  profiles: local
+  profiles.include:
+    - registration-beta
+
+---
+
+spring:
+  profiles: beta
+  profiles.include:
+    - registration-beta
+
+---
+
+spring:
+  profiles: release
+  profiles.include:
+    - registration-release
