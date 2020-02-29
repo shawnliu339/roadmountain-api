@@ -1,8 +1,7 @@
 spring:
   data:
     mongodb:
-      database: ${MONGO_DB}
-      uri: mongodb://${MONGO_USER}:${MONGO_PASSWORD}@ds047197.mlab.com:47197/heroku_1lp8qhqq?retryWrites=false
+      uri: ${MONGODB_URI}?retryWrites=false
 
 google:
   client-id: ${GOOGLE_CLIENT_ID}
