@@ -36,6 +36,8 @@ dependencies {
     implementation("com.google.oauth-client:google-oauth-client-jetty:1.23.0")
     implementation("com.google.apis:google-api-services-gmail:v1-rev83-1.23.0")
 
+    implementation("org.apache.commons:commons-csv:1.8")
+
     // test
     implementation("org.assertj:assertj-core:3.14.0")
     testImplementation("com.nhaarman.mockitokotlin2:mockito-kotlin:2.2.0")
