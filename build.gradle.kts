@@ -20,6 +20,8 @@ dependencies {
     implementation("org.springframework:spring-webmvc:5.2.3.RELEASE")
     implementation("org.springframework.boot:spring-boot-starter-web")
     implementation("org.springframework.boot:spring-boot-starter-data-mongodb")
+    implementation("org.springframework.boot:spring-boot-starter-security")
+    implementation("org.springframework.security:spring-security-test")
 
     // kotlin
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")

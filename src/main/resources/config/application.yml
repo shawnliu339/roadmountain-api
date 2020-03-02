@@ -5,6 +5,10 @@ google:
   client-id: ${GOOGLE_CLIENT_ID}
   client-secret: ${GOOGLE_CLIENT_SECRET}
 
+admin:
+  email: ${ADMIN_EMAIL}
+  password: ${ADMIN_PASSWORD}
+
 spring:
   data.mongodb.uri: ${MONGODB_URI}?retryWrites=false
   profiles.active: local
