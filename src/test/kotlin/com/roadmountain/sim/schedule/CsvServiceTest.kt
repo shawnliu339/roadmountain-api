@@ -49,6 +49,23 @@ open class CsvServiceTest {
                             address = "ABC street, test hotel\"",
                             email = "testEmail"
                         )
+                    ),
+                    Registration(
+                        suffix = CustomerSuffix.MISS,
+                        simNo = "testSimNo",
+                        passportCountry = "jp",
+                        dateOfBirth = LocalDate.parse("2010-10-10"),
+                        brand = "testBrand",
+                        plan = "testPlan",
+                        privacy = RegistrationPrivacy(
+                            firstName = "testFirstName",
+                            middleName = "testMiddleName",
+                            lastName = "testLastName",
+                            passportNo = "testPassportNo",
+                            passportExpiry = LocalDate.parse("2010-11-10"),
+                            address = "ABC street, test hotel\"",
+                            email = "testEmail"
+                        )
                     )
                 )
             )
