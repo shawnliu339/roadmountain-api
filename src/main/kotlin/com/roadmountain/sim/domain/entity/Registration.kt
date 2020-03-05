@@ -11,6 +11,7 @@ import java.time.LocalDate
 data class Registration(
     @field:Id
     private val _id: String? = null,
+    val orderId: String = "",
     val suffix: CustomerSuffix,
     @field:Indexed(unique = true)
     val simNo: String,
