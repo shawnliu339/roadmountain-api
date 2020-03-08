@@ -5,7 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping
 
 @Controller
 class HtmlController {
-    @GetMapping
+    @GetMapping(path = ["/", "/admin/**"])
     fun home(): String {
         return "/front/dist/index.html"
     }

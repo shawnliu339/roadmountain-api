@@ -25,7 +25,7 @@ class WebSecurityConfiguration(
             .antMatchers("/api/admin/reset")
             .permitAll()
 
-            .antMatchers("/api/admin/**")
+            .antMatchers("/api/admin/**", "/admin/**")
             .hasAuthority("ADMIN")
 
             .and()
