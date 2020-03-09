@@ -11,7 +11,7 @@ import java.time.LocalDate
 data class Registration(
     @field:Id
     private val _id: String? = null,
-    val orderId: String = "",
+    val orderId: String,
     val suffix: CustomerSuffix,
     @field:Indexed(unique = true)
     val simNo: String,
@@ -20,6 +20,7 @@ data class Registration(
     val brand: String,
     val plan: String,
     val privacy: RegistrationPrivacy?,
+    val updated: Instant = Instant.now(),
     val created: Instant = Instant.now()
 ) {
     val id: String
