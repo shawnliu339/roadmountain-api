@@ -12,4 +12,14 @@ class ValidatorController(
     fun uniqueSimNumber(@PathVariable simNo: String): Boolean {
         return validatorService.uniqueSimNumber(simNo)
     }
+
+    @GetMapping("/api/validators/orderids/{orderId}/exist")
+    fun existingOrderId(@PathVariable orderId: String): Boolean {
+        return validatorService.existingOrderId(orderId)
+    }
+
+    @GetMapping("/api/validators/orderids/{orderId}/unique")
+    fun uniqueOrderId(@PathVariable orderId: String): Boolean {
+        return validatorService.uniqueOrderId(orderId)
+    }
 }

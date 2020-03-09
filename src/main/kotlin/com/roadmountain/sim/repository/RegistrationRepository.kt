@@ -9,4 +9,6 @@ interface RegistrationRepository : MongoRepository<Registration, String> {
     fun findByCreatedBetween(range: Range<Instant>): List<Registration>
 
     fun findBySimNo(simNo: String): Registration?
+
+    fun findByOrderId(orderId: String): Registration?
 }
